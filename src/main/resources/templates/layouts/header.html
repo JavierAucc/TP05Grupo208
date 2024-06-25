@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es" >
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" data-th-href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+	
+	<nav data-th-fragment="nav"	class="navbar bg-body-tertiary">
+			  <div class="container row bg-body-tertiary">
+			  	<div class=col-2>
+			  		<a class="navbar-brand" href="https://www.fi.unju.edu.ar/" target="_blank">
+				    <img src="/image/iconos/unju.png" alt="icono" width="150" class="img-fluid">
+				  </a>
+			  		</div>
+				 <div class=col-10>
+					    <h1 class="text-center">FACULTAD DE INGENIERíA</h1>
+					    <h2>
+					   		Siendo proactivos, responsables de nuestro propio destino
+					    </h2>
+				 </div>
+				 <div class="h4" >
+				<nav class="navbar navbar-expand-lg p-3 bg-info bg-opacity-10 border border-info border-start-0 rounded-end ">
+					  <div class="container-fluid " >
+					    <a class="navbar-brand btn btn-outline-success me-2" href="/principal/index">Inicio</a>
+					    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+					      <span class="navbar-toggler-icon"></span>
+					    </button>
+					    <div class="collapse navbar-collapse justify-content-center " id="navbarNavAltMarkup">
+					      <div class="navbar-nav">
+					        <a class="nav-link btn btn-outline-success me-2" href="#"> <del>Acerca de</del></a>
+					        <a class="nav-link btn btn-outline-success me-2" href="#"> <del>Noticias</del> </a>
+					        <a class="nav-link btn btn-outline-success me-2" href="#" > <del>Contactos</del> </a>
+					        <a class="nav-link btn btn-outline-success me-2" href="/formularioCarrera">Carreras</a>
+					        <a class="nav-link btn btn-outline-success me-2" href="/formularioDocente">Docentes</a>
+					        <a class="nav-link btn btn-outline-success me-2" href="/formularioMateria">Materias</a>
+					        <a class="nav-link btn btn-outline-success me-2" href="/formularioAlumno">Alumnos</a>
+					      </div>
+					    </div>
+					    
+					  </div>
+				</nav>
+			</div>
+			</div>
+			
+		</nav>
+		
+		<script data-th-href="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"
+		type="text/javascript"></script> 
+</body>
+</html>

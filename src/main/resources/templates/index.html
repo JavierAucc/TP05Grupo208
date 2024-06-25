@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark" >
+<head>
+	<meta charset="UTF-8">
+	<title>TRABAJO PRACTICO N4</title>
+	<link rel="stylesheet" data-th-href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="/css/styles.css"></link>
+</head>
+	<body>	
+
+		<div class="container" >
+			<header data-th-replace="~{fragments/header::nav}">
+			</header>	
+				
+			<div class=row>
+				<main class="col-9" >
+						<div data-th-replace="~{fragments/header::carrusel}">
+						</div>
+						<div data-th-replace="~{fragments/header::acordeon}">
+						</div>
+				</main>
+				<aside class="col-3" >
+					<div>
+						<div class="card border border-success" style="width: 19rem;" >
+							  <img src="/image/logounju.png" class="card-img-top" alt="logo" width="200" height="200">
+							  <div class="card-body">
+							    <h5 class="card-title">Facultad de Ingenieria </h5>
+							    <p class="card-text">Una facultad es un centro docente donde se imparten estudios superiores especializados en alguna materia o rama del saber.
+							     Generalmente constituye una subdivisión de una universidad.
+							    </p>
+							  </div>
+							</div>
+					</div>
+					<div data-th-replace="~{fragments/header::card}">
+					</div>
+				</aside>
+			</div >	
+			<div>
+					
+			</div>	
+		</div>
+		
+		<footer data-th-replace="~{fragments/header::foot}">
+			</footer>
+			
+		<script data-th-href="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"
+		type="text/javascript"></script> 
+	</body>
+	
+</html>
