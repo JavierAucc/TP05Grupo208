@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario materia</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">            
+</head>
+<body>  
+    <div class="container fs-4">
+        <header data-th-replace="~{layouts/header::nav}"></header>
+        <h1>FORMULARIO MATERIA</h1>         
+        <form data-th-object="${nuevaMateria}" data-th-action="${flag}?@{/modificarMateria}:@{/guardarMateria}" method="post">
+             <input id="codigo" name="codigo" type="hidden" class="form-control" data-th-field="*{codigoMateria}">
+             <input id="estado" name="estado" type="hidden" class="form-control" data-th-field="*{estadoMateria}">                                        
+             <div class="col-md-4">
+                 <label for="nombre" class="form-label">Nombre Materia</label>
+                 <input id="nombre" name="nombre" type="text" class="form-control" placeholder="Ingrese materia" required data-th-field="*{nombreMateria}">
+             </div>
+             <div class="col-md-4">
+                 <label for="curso" class="form-label">Curso Materia</label>
+                 <input id="curso" name="curso" type="text" class="form-control" placeholder="Ingrese curso" required data-th-field="*{cursoMateria}">
+             </div>
+             <div class="col-md-4">
+                 <label for="cantidadHoras" class="form-label">Cantidad de horas</label>
+                 <input id="cantidadHoras" name="cantidadHoras" type="number" class="form-control" required data-th-field="*{duracionMateria}">
+             </div>                                                
+             <div class="col-md-4">
+                    <label for="modalidad" class="form-label">Modalidad</label><br>                                                                                                                                                                      
+                    <label for="presencial">presencial</label>
+                    <input type="radio" id="presencial" name="modalidad" value="true" data-th-field="*{modalidadMateria}"></input><br>
+                    <label for="virtual">virtual</label>
+                    <input type="radio" id="virtual" name="modalidad" value="false" data-th-field="*{modalidadMateria}"></input><br>                                          
+             </div>             
+             <button type="submit" class="btn btn-primary">Guardar materia</button>                 
+         </form>
+         <footer data-th-replace="~{layouts/footer::foot}"></footer>    
+    </div>   
+    <script data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>    
+</body>
+</html>
