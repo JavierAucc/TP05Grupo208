@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado carreras</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">            
+</head>
+<body>
+    <div class="container fs-4">
+   	    <header data-th-replace="~{layouts/header::nav}"></header>
+        <h1 class="text-center">CARRERAS</h1>
+        <div class="card" data-th-each="c : ${listadoCarreras}">
+            <div class="card-header">
+                <h3 class="card-title"><span data-th-text="${c.nombreCarrera}"></span></h3>
+            </div>
+            <div class="card-body">                            
+                <ul>
+                    <li>
+                        <strong>Código:</strong> <span data-th-text="${c.codigoCarrera}"></span>
+                    </li>
+                    <li>
+                        <strong>Cantidad de años:</strong> <span data-th-text="${c.duracionCarrera}"></span>
+                    </li>
+                    <li>
+                        <strong>Estado:</strong> <span data-th-text="${c.estadoCarrera ? 'Activa' : 'Inactiva'}"></span>
+                    </li>
+                </ul>
+                <a data-th-href="@{'/eliminarCarrera/'+${c.codigoCarrera}}" class="btn btn-danger">Borrar</a>            
+                <a data-th-href="@{'/modificarCarrera/'+${c.codigoCarrera}}" class="btn btn-danger">Modificar</a>
+            </div>
+        </div>
+        <footer data-th-replace="~{layouts/footer::foot}"></footer>
+    </div>    
+    <script data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>    
+</body>
+</html>
