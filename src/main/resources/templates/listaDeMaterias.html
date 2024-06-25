@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <title>Listado materias</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" data-th-href="@{/webjars/bootstrap/5.3.3/css/bootstrap.min.css}">            
+</head>
+<body>
+    <div class="container fs-4">
+        <header data-th-replace="~{layouts/header::nav}"></header>
+        <h1 class="text-center">MATERIAS</h1>
+        <div class="card" data-th-each="m : ${listadoMaterias}">
+            <div class="card-header">
+                <h3 class="card-title"><span data-th-text="${m.nombreMateria}"></span></h3>
+            </div>
+            <div class="card-body">                            
+                <ul>
+                    <li>
+                        <strong>Código:</strong> <span data-th-text="${m.codigoMateria}"></span>
+                    </li>
+                    <li>
+                        <strong>Curso:</strong> <span data-th-text="${m.cursoMateria}"></span>
+                    </li>
+                    <li>
+                        <strong>Cantidad de horas:</strong> <span data-th-text="${m.duracionMateria}"></span>
+                    </li>
+                    <li>
+                        <strong>Modalidad:</strong> <span data-th-text="${m.modalidadMateria ? 'presencial' : 'virtual'}"></span>
+                    </li>                  
+                    <li>
+                        <strong>Estado:</strong> <span data-th-text="${m.estadoMateria}"></span>
+                    </li>
+                </ul>
+                <a data-th-href="@{'/eliminarMateria/'+${m.codigoMateria}}" class="btn btn-danger">Borrar</a>            
+                <a data-th-href="@{'/modificarMateria/'+${m.codigoMateria}}" class="btn btn-danger">Modificar</a>
+            </div>
+        </div>
+        <footer data-th-replace="~{layouts/footer::foot}"></footer>
+    </div>    
+    <script data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"></script>    
+</body>
+</html>
