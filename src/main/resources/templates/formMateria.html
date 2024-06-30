@@ -11,26 +11,29 @@
         <header data-th-replace="~{layouts/header::nav}"></header>
         <h1>FORMULARIO MATERIA</h1>         
         <form data-th-object="${nuevaMateria}" data-th-action="${flag}?@{/modificarMateria}:@{/guardarMateria}" method="post">
-             <input id="codigo" name="codigo" type="hidden" class="form-control" data-th-field="*{codigoMateria}">
-             <input id="estado" name="estado" type="hidden" class="form-control" data-th-field="*{estadoMateria}">                                        
+             <input id="codigo" name="codigo" type="hidden" class="form-control" data-th-field="*{codigo}">
+             <input id="estado" name="estado" type="hidden" class="form-control" data-th-field="*{estado}">                                        
              <div class="col-md-4">
                  <label for="nombre" class="form-label">Nombre Materia</label>
-                 <input id="nombre" name="nombre" type="text" class="form-control" placeholder="Ingrese materia" required data-th-field="*{nombreMateria}">
+                 <input id="nombre" name="nombre" type="text" class="form-control" placeholder="Ingrese materia" required data-th-field="*{nombre}">
+                 <p class="form-text text-danger" data-th-if="${#fields.hasErrors('nombre')}" data-th-errors="*{nombre}"></p>
              </div>
              <div class="col-md-4">
                  <label for="curso" class="form-label">Curso Materia</label>
-                 <input id="curso" name="curso" type="text" class="form-control" placeholder="Ingrese curso" required data-th-field="*{cursoMateria}">
+                 <input id="curso" name="curso" type="text" class="form-control" placeholder="Ingrese curso" required data-th-field="*{curso}">
+                 <p class="form-text text-danger" data-th-if="${#fields.hasErrors('curso')}" data-th-errors="*{curso}"></p>
              </div>
              <div class="col-md-4">
                  <label for="cantidadHoras" class="form-label">Cantidad de horas</label>
-                 <input id="cantidadHoras" name="cantidadHoras" type="number" class="form-control" required data-th-field="*{duracionMateria}">
+                 <input id="cantidadHoras" name="cantidadHoras" type="number" class="form-control" required data-th-field="*{duracion}">
+                 <p class="form-text text-danger" data-th-if="${#fields.hasErrors('duracion')}" data-th-errors="*{duracion}"></p>
              </div>                                                
              <div class="col-md-4">
                     <label for="modalidad" class="form-label">Modalidad</label><br>                                                                                                                                                                      
                     <label for="presencial">presencial</label>
-                    <input type="radio" id="presencial" name="modalidad" value="true" data-th-field="*{modalidadMateria}"></input><br>
+                    <input type="radio" id="presencial" name="modalidad" value="true" data-th-field="*{modalidad}"></input><br>
                     <label for="virtual">virtual</label>
-                    <input type="radio" id="virtual" name="modalidad" value="false" data-th-field="*{modalidadMateria}"></input><br>                                          
+                    <input type="radio" id="virtual" name="modalidad" value="false" data-th-field="*{modalidad}"></input><br>                                          
              </div>             
              <button type="submit" class="btn btn-primary">Guardar materia</button>                 
          </form>

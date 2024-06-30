@@ -13,8 +13,6 @@ import lombok.Setter;
 public class MateriaDTO {
 	private Integer codigoMateria;
 	private String nombreMateria;
-	private String cursoMateria;
 	private int duracionMateria;
 	private boolean modalidadMateria;
-	private boolean estadoMateria;
 }
