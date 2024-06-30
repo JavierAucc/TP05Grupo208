@@ -1,15 +1,15 @@
 package ar.edu.unju.fi.DTO;
 
+
+
 import java.time.LocalDate;
 
 import org.springframework.stereotype.Component;
 
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @Component
 public class AlumnoDTO {

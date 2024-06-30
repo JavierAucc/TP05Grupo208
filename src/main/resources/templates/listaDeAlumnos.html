@@ -25,7 +25,7 @@
 		    </tr>
 		  </thead>
 		  <tbody>
-		    <tr  data-th-each=" alumno : ${listadoAlumno}">
+		    <tr  data-th-each=" alumno : ${listadoAlumnos}">
 		      <th data-th-text="${alumno.lu}"></th>
 		      <td data-th-text="${alumno.nombre}"></td>
 		      <td data-th-text="${alumno.apellido}"></td>
@@ -41,6 +41,11 @@
 		    </tr>
 			</tbody>
 		</table>
+		
+		<div class="alert alert-danger" role="alert" data-th-if="${errors}">
+			<p data-th-text="${cargaAlumnoErrorMessage}"></p>
+		</div>
+		
 		<div class="d-grid gap-2 col-6 mx-auto" >
 			<a href="/formularioAlumno" class="button btn btn-primary">Volver</a>
 		</div>

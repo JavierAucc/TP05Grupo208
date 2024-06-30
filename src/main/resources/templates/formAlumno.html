@@ -19,6 +19,7 @@
 						  <div class="col-md-12">
 						    <label for="lu" class="form-label">Libreta Universitaria</label>
 						    <input type="text" class="form-control" id="lu" data-th-field="*{lu}" data-th-readonly=${band}>
+						  	<p class="form-text text-danger" data-th-if="${#fields.hasErrors('lu')}" data-th-errors="*{lu}"></p>
 						  </div>
 						  
 						  <input id="estado" name="estado" type="hidden" class="form-control" data-th-field="*{estado}">
@@ -26,37 +27,67 @@
 						  <div class="col-md-12">
 						    <label for="nombre" class="form-label">Nombre</label>
 						    <input type="text" class="form-control" id="nombre" data-th-field="*{nombre}">
+						    <p class="form-text text-danger" data-th-if="${#fields.hasErrors('nombre')}" data-th-errors="*{nombre}"></p>
 						  </div>
 						  
 						  <div class="col-md-12">
 						    <label for="apellido" class="form-label">Apellido</label>
 						    <input type="text" class="form-control" id="apellido" data-th-field="*{apellido}">
+						    <p class="form-text text-danger" data-th-if="${#fields.hasErrors('apellido')}" data-th-errors="*{apellido}"></p>
 						  </div>
 						  
 						  <div class="col-md-12">
 						    <label for="dni" class="form-label">Dni</label>
 						    <input type="text" class="form-control" id="dni" data-th-field="*{dni}">
+						    <p class="form-text text-danger" data-th-if="${#fields.hasErrors('dni')}" data-th-errors="*{dni}"></p>
 						  </div>
 						  
 						   <div class="col-md-12">
 						    <label for="fnac" class="form-label">Fecha de Nacimiento</label>
-						    <input type="date" class="form-control" id="fnac" data-th-field="*{fnacimiento}" required>
+						    <input type="date" class="form-control" id="fnac" data-th-field="*{fnacimiento}">
+						    <p class="form-text text-danger" data-th-if="${#fields.hasErrors('fnacimiento')}" data-th-errors="*{fnacimiento}"></p>
 						  </div>
 						  
 						   <div class="col-md-12">
 						    <label for="domicilio" class="form-label">Domicilio</label>
 						    <input type="text" class="form-control" id="domicilio" data-th-field="*{domicilio}">
+						    <p class="form-text text-danger" data-th-if="${#fields.hasErrors('domicilio')}" data-th-errors="*{domicilio}"></p>
 						  </div>
 						  
 						  <div class="col-md-12">
 						    <label for="email" class="form-label">E-mail</label>
 						    <input type="email" class="form-control" id="email" data-th-field="*{email}">
+						   <p class="form-text text-danger" data-th-if="${#fields.hasErrors('email')}" data-th-errors="*{email}"></p>
 						  </div>
 						  
 						  <div class="col-md-12">
 						    <label for="tel" class="form-label">Telefono</label>
 						    <input type="text" class="form-control" id="tel" data-th-field="*{telefono}">
+						    <p class="form-text text-danger" data-th-if="${#fields.hasErrors('telefono')}" data-th-errors="*{telefono}"></p>
 						  </div>
+						  
+						  
+<!-- 						  <div class="col-md-12"> -->
+<!-- 					    <label for="carrera" class="form-label">Carrera</label> -->
+<!-- 					    	<select id="carrera" data-th-field="*{carrera.codigo}" class="form-control" required> -->
+<!-- 						    	<option value="">Seleccionar Carrera</option> -->
+<!-- 						    	<option data-th-value="${c.codigo}" data-th-each="c:${listadoCarreras}" data-th-text="${c.nombre}"></option> -->
+<!-- 						   	 </select> -->
+					    
+<!-- 					  	</div> -->
+							  
+							  
+							  
+<!-- 							  <div class="mb-e"> -->
+<!-- 	            <label class="form-label">Carrera</label> -->
+<!-- 	            <select data-th-field="*{carrera}" class="form-control"><br> -->
+<!-- 	                <option value="">Seleccionar carrera...</option> -->
+<!-- 	                <option data-th-each="c : ${carreras}" data-th-value="${c.codigoCar}" data-th-text="${c.nombre + ' ' + c.duracion}"></option> -->
+<!-- 	            </select> -->
+<!-- 	        </div> -->
+						  
+						  
+						  
 						  <button type="submit" class="btn btn-outline-success">Guardar Alumno</button>
 				 	 </div>
 				 	 <div class="col-4">

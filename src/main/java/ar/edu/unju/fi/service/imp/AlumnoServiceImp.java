@@ -19,11 +19,12 @@ public class AlumnoServiceImp implements AlumnoService{
 	AlumnoRepository alumnoRepository;
 	@Autowired
 	AlumnoMapDTO alumnoMapDTO;
+
 	@Override
-	public void guardarAlumno(AlumnoDTO alumnoDTO) {
+	public void guardarAlumno(Alumno alumno) {
 		// TODO Auto-generated method stub
-		alumnoDTO.setEstado(true);
-		alumnoRepository.save(alumnoMapDTO.convertirAlumnoDTOAAlumno(alumnoDTO));
+		alumno.setEstado(true);
+		alumnoRepository.save(alumno);
 	}
 
 	@Override
@@ -33,37 +34,43 @@ public class AlumnoServiceImp implements AlumnoService{
 	}
 
 	@Override
-	public void borrarAlumnoDTO(String lu) {
+	public List<Alumno> mostrarAlumno() {
+		// TODO Auto-generated method stub
+		return alumnoRepository.findAlumnoByEstado(true);
+	}
+	
+	@Override
+	public void borrarAlumno(String lu) {
 		// TODO Auto-generated method stub
 		//List<Alumno> todosLosAlumnos = alumnoRepository.findAll();
-		List<AlumnoDTO> todosLosAlumnos = alumnoMapDTO.convertirListaAlumnosAListaAlumnosDTO(alumnoRepository.findAlumnoByEstado(true));
-		int p=buscarPosicionAlumnoDTO(lu);
+		List<Alumno> todosLosAlumnos = alumnoRepository.findAlumnoByEstado(true);
+		int p=buscarPosicionAlumno(lu);
 		if(p!=-1) {
 			todosLosAlumnos.get(p).setEstado(false);
-			alumnoRepository.save(alumnoMapDTO.convertirAlumnoDTOAAlumno(todosLosAlumnos.get(p)));
+			alumnoRepository.save(todosLosAlumnos.get(p));
 		}
 	}
 
 	@Override
-	public void modificarAlumnoDTO(AlumnoDTO m) {
+	public void modificarAlumno(Alumno m) {
 		// TODO Auto-generated method stub
-		List<AlumnoDTO> todosLosAlumnos = alumnoMapDTO.convertirListaAlumnosAListaAlumnosDTO(alumnoRepository.findAlumnoByEstado(true));
-		int p=buscarPosicionAlumnoDTO(m.getLu());
+		List<Alumno> todosLosAlumnos = alumnoRepository.findAlumnoByEstado(true);
+		int p=buscarPosicionAlumno(m.getLu());
 		if (p!=-1) {
 			todosLosAlumnos.set(p,m);
 			
-			alumnoRepository.save(alumnoMapDTO.convertirAlumnoDTOAAlumno(todosLosAlumnos.get(p)));
+			alumnoRepository.save(todosLosAlumnos.get(p));
 		}
 	}
 	
 	@Override
-	public int buscarPosicionAlumnoDTO(String lu) {
+	public int buscarPosicionAlumno(String lu) {
 		// TODO Auto-generated method stub
 		int j=-1;
-		List<AlumnoDTO> todosLosAlumnos = alumnoMapDTO.convertirListaAlumnosAListaAlumnosDTO(alumnoRepository.findAlumnoByEstado(true)); 
+		List<Alumno> todosLosAlumnos = alumnoRepository.findAlumnoByEstado(true); 
 		for(int i=0; i< todosLosAlumnos.size(); i++) {
-			AlumnoDTO alumnoDTO = todosLosAlumnos.get(i);
-			if(alumnoDTO.getLu().equals(lu)) {
+			Alumno alumno = todosLosAlumnos.get(i);
+			if(alumno.getLu().equals(lu)) {
 				 j=i;
 				break;
 			}
@@ -72,11 +79,13 @@ public class AlumnoServiceImp implements AlumnoService{
 	}
 	
 	@Override
-	public AlumnoDTO buscarAlumnoDTO(String lu) {
+	public Alumno buscarAlumno(String lu) {
 		// TODO Auto-generated method stub
-		List<AlumnoDTO> alumnos = alumnoMapDTO.convertirListaAlumnosAListaAlumnosDTO(alumnoRepository.findAlumnoByEstado(true));
-		int p=buscarPosicionAlumnoDTO(lu);
+		List<Alumno> alumnos = alumnoRepository.findAlumnoByEstado(true);
+		int p=buscarPosicionAlumno(lu);
 		return (p!=-1) ? alumnos.get(p) : null;
 	}
+
+	
 
 }
