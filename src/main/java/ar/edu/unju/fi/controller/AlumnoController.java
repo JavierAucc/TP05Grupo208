@@ -2,6 +2,7 @@ package ar.edu.unju.fi.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +13,8 @@ import ar.edu.unju.fi.DTO.AlumnoDTO;
 import ar.edu.unju.fi.model.Alumno;
 import ar.edu.unju.fi.repository.AlumnoRepository;
 import ar.edu.unju.fi.service.AlumnoService;
+import ar.edu.unju.fi.service.CarreraService;
+import jakarta.validation.Valid;
 
 
 
@@ -19,30 +22,47 @@ import ar.edu.unju.fi.service.AlumnoService;
 public class AlumnoController {
 	
 	@Autowired
-	AlumnoDTO nuevoAlumnoDTO;
+	Alumno nuevoAlumno;
 	
 	@Autowired
 	AlumnoService alumnoService;
 	
+	
+	
 	@GetMapping("/formularioAlumno")
 	public ModelAndView getFormAlumno() {
-		//vista formCarrera.html
 		ModelAndView modelView = new ModelAndView("formAlumno");
 		//agrega el objeto
-		modelView.addObject("nuevoAlumno", nuevoAlumnoDTO);
+		modelView.addObject("nuevoAlumno", nuevoAlumno);
 		modelView.addObject("band",false);
+		//modelView.addObject("listadoCarreras",carreraService.mostrarCarreras()); // para que muestra las carreras
 		return modelView;
 	}
 	
 	@PostMapping("/guardarAlumno")
-	public ModelAndView saveAlumno(@ModelAttribute("nuevoAlumno") AlumnoDTO alumnoParaGuardar) {
-		//guardar
-		//ListadoAlumno.agregarAlumno(alumnoParaGuardar); //se agrega la alumno
-		alumnoService.guardarAlumno(alumnoParaGuardar);
+	public ModelAndView saveAlumno(@Valid @ModelAttribute("nuevoAlumno") Alumno nuevoAlumno, BindingResult resultado ) {
+		//BindingResult es una interfaz que nos muestra q ocurrio cuando se produce el filtrado "Valid", captura el error
 		//Una vez guardado se muestra la vista
+
 		ModelAndView modelView = new ModelAndView("listaDeAlumnos");//listaDeAlumnos es html		
-		//modelView.addObject("listadoAlumno",ListadoAlumno.listarAlumnos()); //el objeto Listadoalumnos	
-		modelView.addObject("listadoAlumno",alumnoService.mostrarAlumnoDTO());
+			try {
+				if(resultado.hasErrors()) {
+					modelView.setViewName("formAlumno");
+				}
+				else {
+					//System.out.println("Alumno guardado correctamente  "+nuevoAlumno.getNombre());
+					alumnoService.guardarAlumno(nuevoAlumno);
+					System.out.println("Alumno guardado correctamente  "+nuevoAlumno.getNombre());
+					modelView.addObject("listadoAlumnos", alumnoService.mostrarAlumno());
+				}
+			}
+			catch( Exception e){
+				boolean errors = true;
+				modelView.addObject("errors", errors);
+				modelView.addObject("cargaAlumnoErrorMessage", " Error al cargar en la BD " + e.getMessage());
+				System.out.println(e.getMessage());
+			}
+
 		return modelView;
 	}
 		
@@ -50,11 +70,11 @@ public class AlumnoController {
 	public ModelAndView borrarAlumno(@PathVariable(name="lu") String lu) {
 		//borrar
 		//ListadoAlumno.eliminarAlumno(lu);
-		alumnoService.borrarAlumnoDTO(lu);
+		alumnoService.borrarAlumno(lu);
 		
 		//mostrar el nuevo listado
 		ModelAndView modelView = new ModelAndView("listaDeAlumnos");
-		modelView.addObject("listadoAlumno",alumnoService.mostrarAlumnoDTO());
+		modelView.addObject("listadoAlumnos",alumnoService.mostrarAlumno());
 		
 		return modelView;
 		}
@@ -62,28 +82,41 @@ public class AlumnoController {
 	@GetMapping("/modificarAlumno/{lu}")
 	public ModelAndView getModificarAlumno(@PathVariable(name="lu") String lu) {
 		
-		AlumnoDTO alumnoDTO = alumnoService.buscarAlumnoDTO(lu);
+		Alumno alumno = alumnoService.buscarAlumno(lu);
 
 		ModelAndView modelView = new ModelAndView("formAlumno");
-		
-		modelView.addObject("nuevoAlumno", alumnoDTO);
+		System.out.println("Alumno a modificar "+alumno.getNombre());
+		modelView.addObject("nuevoAlumno", alumno);
 		modelView.addObject("band",true);
 		return modelView;
 	}
 	
+	
 	@PostMapping("/modificarAlumno")
-	public ModelAndView modificarAlumno(@ModelAttribute("alumno") AlumnoDTO alumnoModificado) {
-		//ListadoAlumno.modificarAlumno(alumnoModificado);
-		alumnoService.modificarAlumnoDTO(alumnoModificado);
-		ModelAndView modelView = new ModelAndView("listaDeAlumnos");
-		modelView.addObject("listadoAlumno",alumnoService.mostrarAlumnoDTO());
+	public ModelAndView modificarAlumno(@Valid @ModelAttribute("nuevoAlumno") Alumno alumnoModificado, BindingResult resultado) {
+		
+			ModelAndView modelView = new ModelAndView("listaDeAlumnos");
+			try {
+				if(resultado.hasErrors()) {
+					modelView.setViewName("formAlumno");
+					System.out.println("ERRRRRRRROOOOOOR");
+				}
+				else {
+					//System.out.println("Alumno modificado correctamente  "+nuevoAlumno.getNombre());
+					alumnoService.modificarAlumno(alumnoModificado);
+					System.out.println("Alumno modificado correctamente  "+alumnoModificado.getNombre());
+					modelView.addObject("listadoAlumnos", alumnoService.mostrarAlumno());
+				}
+			}
+			catch( Exception e){
+				boolean errors = true;
+				modelView.addObject("errors", errors);
+				modelView.addObject("cargaAlumnoErrorMessage", " Error al cargar en la BD " + e.getMessage());
+				System.out.println(e.getMessage());
+			}
+			
 		return modelView;
 			
-	}
-	
-	
-	
-	
-	
+	}	
 	
 }
