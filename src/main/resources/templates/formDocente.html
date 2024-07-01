@@ -27,24 +27,28 @@
 				<label for="nombre" class="form-label">Nombre Docente</label> <input
 					type="text" class="form-control" id="nombre"
 					data-th-field="*{nombre}" required>
+					<p class="form-text text-danger" data-th-if="${#fields.hasErrors('nombre')}" data-th-errors="*{nombre}"></p>
 			</div>
 
 			<div class="col-sm-6">
 				<label for="apellido" class="form-label">Apellido Docente</label> <input
 					type="text" class="form-control" id="apellido"
 					data-th-field="*{apellido}" required>
+									<p class="form-text text-danger" data-th-if="${#fields.hasErrors('apellido')}" data-th-errors="*{apellido}"></p>			
 			</div>
 
 			<div class="col-sm-6">
 				<label for="email" class="form-label">Email Docente</label> <input
 					type="email" class="form-control" id="email"
 					data-th-field="*{email}" required>
+				<p class="form-text text-danger" data-th-if="${#fields.hasErrors('email')}" data-th-errors="*{email}"></p>
 			</div>
 
 			<div class="col-sm-6">
 				<label for="telefono" class="form-label"></label>Telefono Docente<input
 					type="number" class="form-control" id="telefono"
 					data-th-field="*{telefono}" required>
+									<p class="form-text text-danger" data-th-if="${#fields.hasErrors('telefono')}" data-th-errors="*{telefono}"></p>
 			</div>
 
 			<input id="estado" name="estado" type="hidden" class="form-control"
@@ -53,7 +57,7 @@
 				Docente</button>
 
 		</form>
-		<br> <a href="/guardarDocente"><button type="submit"
+		<br> <a href="/mostrarDocentes"><button type="submit"
 				class="btn btn-primary">Ver Docentes</button></a>
 	</div>
 	<footer>
