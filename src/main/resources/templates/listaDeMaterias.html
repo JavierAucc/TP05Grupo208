@@ -27,8 +27,10 @@
                     </li>
                     <li>
                         <strong>Modalidad:</strong> <span data-th-text="${m.modalidadMateria ? 'presencial' : 'virtual'}"></span>
-                    </li>                      
+                    </li> 
+                                         
                 </ul>
+                <a data-th-href="@{'/filtrarAlumnos/'+${m.codigoMateria}}" class="btn btn-danger">Filtrar Alumnos</a>
                 <a data-th-href="@{'/eliminarMateria/'+${m.codigoMateria}}" class="btn btn-danger">Borrar</a>            
                 <a data-th-href="@{'/modificarMateria/'+${m.codigoMateria}}" class="btn btn-danger">Modificar</a>
             </div>

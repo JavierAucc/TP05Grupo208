@@ -8,7 +8,11 @@ import org.springframework.stereotype.Service;
 import ar.edu.unju.fi.DTO.AlumnoDTO;
 import ar.edu.unju.fi.map.AlumnoMapDTO;
 import ar.edu.unju.fi.model.Alumno;
+import ar.edu.unju.fi.model.Carrera;
+import ar.edu.unju.fi.model.Materia;
 import ar.edu.unju.fi.repository.AlumnoRepository;
+import ar.edu.unju.fi.repository.CarreraRepository;
+import ar.edu.unju.fi.repository.MateriaRepository;
 import ar.edu.unju.fi.service.AlumnoService;
 
 @Service
@@ -19,11 +23,17 @@ public class AlumnoServiceImp implements AlumnoService{
 	AlumnoRepository alumnoRepository;
 	@Autowired
 	AlumnoMapDTO alumnoMapDTO;
-
+	@Autowired
+	MateriaRepository materiaRepository;
+	@Autowired
+	CarreraRepository carreraRepository;
+	
 	@Override
 	public void guardarAlumno(Alumno alumno) {
 		// TODO Auto-generated method stub
 		alumno.setEstado(true);
+//		alumno.getCarrera().getAlumnos().add(alumno);
+//		carreraRepository.save(alumno.getCarrera());
 		alumnoRepository.save(alumno);
 	}
 
@@ -86,6 +96,26 @@ public class AlumnoServiceImp implements AlumnoService{
 		return (p!=-1) ? alumnos.get(p) : null;
 	}
 
-	
+// operaciones materia-alumno
+	@Override
+		public List<Alumno> filtrarAlumnos(Integer codigo) {
+			// TODO Auto-generated method stub
+			return alumnoRepository.findByMateriasCodigo(codigo);
+		}
+	@Override
+	public void inscribirAlumno(Alumno alumno, Materia materia) {
+		// TODO Auto-generated method stub
+		alumno.getMaterias().add(materia);
+		materia.getAlumnos().add(alumno);
+		alumnoRepository.save(alumno);
+		materiaRepository.save(materia);
+	}
+//operaciones alumno-carrera
 
+	@Override
+	public List<Alumno> filtrarAlumnosPorCarrera(String lu) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
 }
