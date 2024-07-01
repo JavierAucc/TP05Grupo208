@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+
 import ar.edu.unju.fi.model.Carrera;
 import ar.edu.unju.fi.service.CarreraService;
 import jakarta.validation.Valid;
@@ -15,6 +16,10 @@ import jakarta.validation.Valid;
 @Controller
 public class CarreraController {
 
+	@Autowired
+	Carrera nuevaCarrera;
+	
+	
 	@Autowired
 	Carrera nuevaCarrera;
 	
@@ -110,5 +115,4 @@ public class CarreraController {
 		modelView.addObject("listadoCarreras",carreraService.mostrarCarrerasDTO());		
 		return modelView;
 	}
-
 }

@@ -19,6 +19,7 @@ public class CarreraServiceImp implements CarreraService{
 	
 	@Autowired
 	CarreraMapDTO carreraMapDTO;
+	
 	@Override
 	public void guardarCarrera(Carrera carrera) {
 		// TODO Auto-generated method stub
@@ -31,7 +32,14 @@ public class CarreraServiceImp implements CarreraService{
 		// TODO Auto-generated method stub
 		return carreraMapDTO.convertirListaCarrerasAListaCarrerasDTO(carreraRepository.findCarreraByEstado(true));
 	}
+	
+	@Override
+	public List<Carrera> mostrarCarreras() {
+		// TODO Auto-generated method stub
+		return carreraRepository.findCarreraByEstado(true);
+	}
 
+	
 	@Override
 	public int buscarPosicionCarrera(String codigo) {
 		// TODO Auto-generated method stub
@@ -74,5 +82,7 @@ public class CarreraServiceImp implements CarreraService{
 			carreraRepository.save(carreras.get(p));
 		}
 	}
+
+	
 
 }

@@ -1,7 +1,10 @@
 package ar.edu.unju.fi.model;
 
+import java.util.List;
+
 import org.springframework.stereotype.Component;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.Max;
@@ -22,6 +25,7 @@ import lombok.ToString;
 
 @Component
 @Entity
+@Table(name="carreras")
 public class Carrera {
 	
 	@Id
@@ -33,12 +37,9 @@ public class Carrera {
 	@Size(min=3, max=20,message="El nombre debe contener minimo 3 Caracteres y 20 como maximo")
 	@Pattern(regexp="[a-z A-Z]*",message="Solo se debe ingresar Letras")
 	private String nombre;
-	
-	@NotNull(message="Debe Ingresar duración de la Carrera")
-	@Min(value=3, message="Se requiere un número mínimo de 3")
-	@Max(value=5, message="Se requiere un número máximo de 5")
-	private int duracion;
+
+	@OneToMany(mappedBy = "carrera", cascade = CascadeType.ALL)
+	private List<Alumno> alumnos;
 	
 	private boolean estado;
-
 }
