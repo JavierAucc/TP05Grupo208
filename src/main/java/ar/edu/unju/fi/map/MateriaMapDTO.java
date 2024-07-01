@@ -14,12 +14,12 @@ import ar.edu.unju.fi.model.Materia;
 public interface MateriaMapDTO {
 	@Mapping(source="codigo",target="codigoMateria")
 	@Mapping(source="nombre",target="nombreMateria")
-	@Mapping(source="curso",target="cursoMateria")
 	@Mapping(source="duracion",target="duracionMateria")
 	@Mapping(source="modalidad",target="modalidadMateria")
-	@Mapping(source="estado",target="estadoMateria")
 	MateriaDTO convertirMateriaAMateriaDTO(Materia m);
 	
+	@Mapping(target = "curso", ignore = true)
+	@Mapping(target = "estado", ignore = true)
 	@InheritInverseConfiguration
 	Materia convertirMateriaDTOAMateria(MateriaDTO m);
 	

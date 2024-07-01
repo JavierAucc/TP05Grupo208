@@ -20,17 +20,14 @@
                         <strong>Código:</strong> <span data-th-text="${m.codigoMateria}"></span>
                     </li>
                     <li>
-                        <strong>Curso:</strong> <span data-th-text="${m.cursoMateria}"></span>
-                    </li>
+                        <strong>Nombre:</strong> <span data-th-text="${m.nombreMateria}"></span>
+                    </li>          
                     <li>
                         <strong>Cantidad de horas:</strong> <span data-th-text="${m.duracionMateria}"></span>
                     </li>
                     <li>
                         <strong>Modalidad:</strong> <span data-th-text="${m.modalidadMateria ? 'presencial' : 'virtual'}"></span>
-                    </li>                  
-                    <li>
-                        <strong>Estado:</strong> <span data-th-text="${m.estadoMateria}"></span>
-                    </li>
+                    </li>                      
                 </ul>
                 <a data-th-href="@{'/eliminarMateria/'+${m.codigoMateria}}" class="btn btn-danger">Borrar</a>            
                 <a data-th-href="@{'/modificarMateria/'+${m.codigoMateria}}" class="btn btn-danger">Modificar</a>
