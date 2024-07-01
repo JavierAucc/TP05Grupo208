@@ -24,6 +24,8 @@ public interface AlumnoMapDTO {
 	@Mapping(source="estado", target="estado")
 	AlumnoDTO convertirAlumnoAAlumnoDTO(Alumno a);
 	
+	@Mapping(target = "carrera", ignore = true)
+	@Mapping(target = "materias", ignore = true)
 	@InheritInverseConfiguration
 	Alumno convertirAlumnoDTOAAlumno (AlumnoDTO adto);
 	

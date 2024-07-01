@@ -21,9 +21,6 @@ public class CarreraController {
 	
 	
 	@Autowired
-	Carrera nuevaCarrera;
-	
-	@Autowired
 	CarreraService carreraService;
 
 	@GetMapping("/formularioCarrera")

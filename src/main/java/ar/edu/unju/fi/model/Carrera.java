@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -37,7 +39,13 @@ public class Carrera {
 	@Size(min=3, max=20,message="El nombre debe contener minimo 3 Caracteres y 20 como maximo")
 	@Pattern(regexp="[a-z A-Z]*",message="Solo se debe ingresar Letras")
 	private String nombre;
+	
+	@NotNull
+	@Min(value=3, message=" Se requiere un número minimo de 3")
+	@Max(value=5, message=" Se requiere un numero maximo de 5")
+	private int duracion;
 
+	
 	@OneToMany(mappedBy = "carrera", cascade = CascadeType.ALL)
 	private List<Alumno> alumnos;
 	
