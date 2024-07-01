@@ -27,11 +27,17 @@
                     </li>
                     <li>
                         <strong>Modalidad:</strong> <span data-th-text="${m.modalidadMateria ? 'presencial' : 'virtual'}"></span>
+                    </li>
+                    <li data-th-if="${m.docenteMateria.estado != false}">                    
+                        <strong>Docente:</strong> <span data-th-text="${m.docenteMateria.nombre+' '+m.docenteMateria.apellido}"></span>                       
                     </li>                      
                 </ul>
                 <a data-th-href="@{'/eliminarMateria/'+${m.codigoMateria}}" class="btn btn-danger">Borrar</a>            
                 <a data-th-href="@{'/modificarMateria/'+${m.codigoMateria}}" class="btn btn-danger">Modificar</a>
             </div>
+            <div class="alert alert-primary" role="alert" data-th-if="${errors}">
+			     <p data-th-text="${cargaMateriaErrorMessage}"></p>			     
+			</div>
         </div>
         <footer data-th-replace="~{layouts/footer::foot}"></footer>
     </div>    

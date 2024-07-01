@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -41,4 +43,7 @@ public class Materia {
 	private int duracion;
 	private boolean modalidad;
 	private boolean estado;
+	@OneToOne
+	@JoinColumn(name="legajo")
+	private Docente docente;
 }

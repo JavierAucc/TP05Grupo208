@@ -34,7 +34,14 @@
                     <input type="radio" id="presencial" name="modalidad" value="true" data-th-field="*{modalidad}"></input><br>
                     <label for="virtual">virtual</label>
                     <input type="radio" id="virtual" name="modalidad" value="false" data-th-field="*{modalidad}"></input><br>                                          
-             </div>             
+             </div>
+             <div class="col-md-4">
+					<label for="docente" class="form-label">Docente</label>
+					<select id="docente" data-th-field="*{docente.legajo}" class="form-control" required>
+					    <option value="">Seleccionar Docente</option>
+						<option data-th-value="${d.legajo}" data-th-each="d:${listadoDocentes}" data-th-text="${d.nombre}"></option>
+				    </select>					    
+			 </div>             
              <button type="submit" class="btn btn-primary">Guardar materia</button>                 
          </form>
          <footer data-th-replace="~{layouts/footer::foot}"></footer>    
