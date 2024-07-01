@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import ar.edu.unju.fi.DTO.CarreraDTO;
-import ar.edu.unju.fi.model.Alumno;
 import ar.edu.unju.fi.model.Carrera;
 import ar.edu.unju.fi.service.CarreraService;
 import jakarta.validation.Valid;
@@ -19,7 +17,7 @@ import jakarta.validation.Valid;
 public class CarreraController {
 
 	@Autowired
-	CarreraDTO nuevaCarreraDTO;
+	Carrera nuevaCarrera;
 	
 	
 	@Autowired

@@ -21,19 +21,19 @@ public class DocenteServiceImp implements DocenteService {
 	DocenteMapDTO docenteMapDTO;
 
 	@Override
-	public void guardarDocente(DocenteDTO docenteDTO) {
+	public void guardarDocente(Docente docente) {
 		// TODO Auto-generated method stub
-		docenteDTO.setEstado(true);
-		docenteRepository.save(docenteMapDTO.convertirDocenteDTOADocente(docenteDTO));
+		docente.setEstado(true);
+		docenteRepository.save(docente);
 
 	}
 
 	@Override
-	public List<Docente> mostrarDocentes() {
+	public List<DocenteDTO> mostrarDocentesDTO() {
 		// TODO Auto-generated method stub
 
 		// return docenteRepository.findAll();
-		return docenteRepository.findDocenteByEstado(true);
+		return docenteMapDTO.convertirListaDocentesAListaDocentesDTO(docenteRepository.findDocenteByEstado(true));
 	}
 
 	@Override

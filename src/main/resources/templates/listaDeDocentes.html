@@ -17,9 +17,6 @@
 					<th scope="col">Legajo</th>
 					<th scope="col">Nombre</th>
 					<th scope="col">Apellido</th>
-					<th scope="col">Email</th>
-					<th scope="col">Telefono</th>
-					<th scope="col">Acciones</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -27,8 +24,6 @@
 					<td data-th-text="${docente.legajo}"></td>
 					<td data-th-text="${docente.nombre}"></td>
 					<td data-th-text="${docente.apellido}"></td>
-					<td data-th-text="${docente.email}"></td>
-					<td data-th-text="${docente.telefono}"></td>
 					
 					<td><a data-th-href="@{'/eliminarDocente/'+${docente.legajo}}"
 						class="btn btn-danger">Eliminar</a> <a

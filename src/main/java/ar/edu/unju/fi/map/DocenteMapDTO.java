@@ -16,11 +16,12 @@ public interface DocenteMapDTO {
 	@Mapping(source = "legajo", target = "legajo")
 	@Mapping(source = "nombre", target = "nombre")
 	@Mapping(source = "apellido", target = "apellido")
-	@Mapping(source = "email", target = "email")
-	@Mapping(source = "telefono", target = "telefono")
-	@Mapping(source = "estado", target = "estado")
 
 	DocenteDTO convertirDocenteADocenteDTO(Docente d);
+
+	@Mapping(target = "email", ignore = true)
+	@Mapping(target = "telefono", ignore = true)
+	@Mapping(target = "estado", ignore = true)
 
 	@InheritInverseConfiguration
 	Docente convertirDocenteDTOADocente(DocenteDTO ddto);

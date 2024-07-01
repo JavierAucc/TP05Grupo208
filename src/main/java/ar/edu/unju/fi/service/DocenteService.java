@@ -10,9 +10,9 @@ import ar.edu.unju.fi.model.Docente;
 @Service
 public interface DocenteService {
 
-	public void guardarDocente(DocenteDTO docenteDTO);
+	public void guardarDocente(Docente docente);
 
-	public List<Docente> mostrarDocentes();
+	public List<DocenteDTO> mostrarDocentesDTO();
 
 	public void borrarDocente(String legajo);
 
