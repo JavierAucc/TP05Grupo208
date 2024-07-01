@@ -14,16 +14,19 @@
          method="post">
              <div class="col-md-4">
 				<label for="codigo" class="form-label">Código Carrera</label> 
-				<input id="codigo" name="codigo" type="text" class="form-control" placeholder="Ingrese codigo" required data-th-field="*{codigoCarrera}" data-th-readonly=${flag}>				
+				<input id="codigo" name="codigo" type="text" class="form-control" placeholder="Ingrese codigo" required data-th-field="*{codigo}" data-th-readonly=${flag}>		
+                <p class="form-text text-danger" data-th-if="${#fields.hasErrors('codigo')}" data-th-errors="*{codigo}"></p>	
 			 </div>                    
-             <input id="estado" name="estado" type="hidden" class="form-control" data-th-field="*{estadoCarrera}">                       
+             <input id="estado" name="estado" type="hidden" class="form-control" data-th-field="*{estado}">                       
              <div class="col-md-4">
                  <label for="nombre" class="form-label">Nombre Carrera</label>
-                 <input id="nombre" name="nombre" type="text" class="form-control" placeholder="Ingrese nombre" required data-th-field="*{nombreCarrera}">
+                 <input id="nombre" name="nombre" type="text" class="form-control" placeholder="Ingrese nombre" required data-th-field="*{nombre}">
+                 <p class="form-text text-danger" data-th-if="${#fields.hasErrors('nombre')}" data-th-errors="*{nombre}"></p>
              </div>
              <div class="col-md-4">
                  <label for="duracion" class="form-label">Años de Carrera</label>
-                 <input id="duracion" name="duracion" type="number" class="form-control" required data-th-field="*{duracionCarrera}">
+                 <input id="duracion" name="duracion" type="number" class="form-control" required data-th-field="*{duracion}">
+                 <p class="form-text text-danger" data-th-if="${#fields.hasErrors('duracion')}" data-th-errors="*{duracion}"></p>
              </div>                      
              <button type="submit" class="btn btn-primary">Guardar carrera</button>                 
          </form>    
