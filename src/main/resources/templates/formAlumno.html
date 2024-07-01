@@ -66,26 +66,16 @@
 						    <p class="form-text text-danger" data-th-if="${#fields.hasErrors('telefono')}" data-th-errors="*{telefono}"></p>
 						  </div>
 						  
-						  
-<!-- 						  <div class="col-md-12"> -->
-<!-- 					    <label for="carrera" class="form-label">Carrera</label> -->
-<!-- 					    	<select id="carrera" data-th-field="*{carrera.codigo}" class="form-control" required> -->
-<!-- 						    	<option value="">Seleccionar Carrera</option> -->
-<!-- 						    	<option data-th-value="${c.codigo}" data-th-each="c:${listadoCarreras}" data-th-text="${c.nombre}"></option> -->
-<!-- 						   	 </select> -->
+						  <div class="col-md-12">
+					    <label for="carrera" class="form-label">Carrera</label>
+					    	<select id="carrera" data-th-field="*{carrera.codigo}" class="form-control" required>
+						    	<option value="">Seleccionar Carrera</option>
+						    	<option data-th-value="${c.codigo}" data-th-each="c:${listadoCarreras}" data-th-text="${c.nombre}"></option>
+						   	 </select>
 					    
-<!-- 					  	</div> -->
+					  	</div>
 							  
 							  
-							  
-<!-- 							  <div class="mb-e"> -->
-<!-- 	            <label class="form-label">Carrera</label> -->
-<!-- 	            <select data-th-field="*{carrera}" class="form-control"><br> -->
-<!-- 	                <option value="">Seleccionar carrera...</option> -->
-<!-- 	                <option data-th-each="c : ${carreras}" data-th-value="${c.codigoCar}" data-th-text="${c.nombre + ' ' + c.duracion}"></option> -->
-<!-- 	            </select> -->
-<!-- 	        </div> -->
-						  
 						  
 						  
 						  <button type="submit" class="btn btn-outline-success">Guardar Alumno</button>
