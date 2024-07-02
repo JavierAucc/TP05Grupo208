@@ -10,7 +10,9 @@ import ar.edu.unju.fi.map.MateriaMapDTO;
 import ar.edu.unju.fi.model.Materia;
 import ar.edu.unju.fi.repository.MateriaRepository;
 import ar.edu.unju.fi.service.MateriaService;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Service
 public class MateriaServiceImp implements MateriaService{
 	
@@ -23,6 +25,9 @@ public class MateriaServiceImp implements MateriaService{
 	@Override
 	public void guardarMateria(Materia m) {
 		// TODO Auto-generated method stub
+		log.info("SERVICE: MateriaServiceImp -> guardarMateria");
+		log.info("METHOD: guardarMateria()");
+		log.info("INFO: Guardando Materia con codigo {}", m.getCodigo());
 		m.setEstado(true);
 		materiaRepository.save(m);
 	}
@@ -30,12 +35,16 @@ public class MateriaServiceImp implements MateriaService{
 	@Override
 	public List<MateriaDTO> mostrarMateriasDTO() {
 		// TODO Auto-generated method stub
+		log.info("SERVICE: MateriaServiceImp -> mostrarMateriasDTO");
+		log.info("METHOD: mostrarMateriasDTO()");
 		return materiaMapDTO.convertirListaMateriasAListaMateriasDTO(materiaRepository.findMateriaByEstado(true));		
 	}
 
 	@Override
 	public int buscarPosicionMateria(int codigo) {
 		// TODO Auto-generated method stub
+		log.info("SERVICE: MateriaServiceImp -> buscarPosicionMateria");
+		log.info("METHOD: buscarPosicionMateria()");
 		List<Materia> materias = materiaRepository.findMateriaByEstado(true); 
 		int alto=materias.size()-1,bajo=0,central,p=-1;	
 		while(p==-1 && bajo<=alto) {
@@ -57,6 +66,9 @@ public class MateriaServiceImp implements MateriaService{
 	@Override
 	public Materia buscarMateria(int codigo) {
 		// TODO Auto-generated method stub
+		log.info("SERVICE: MateriaServiceImp -> buscarMateria");
+		log.info("METHOD: buscarMateria()");
+		log.info("INFO: Buscando materia con codigo {}", codigo);
 		List<Materia> materias = materiaRepository.findMateriaByEstado(true);  
 		int p=buscarPosicionMateria(codigo);
 		return (p!=-1) ? materias.get(p) : null;
@@ -65,6 +77,9 @@ public class MateriaServiceImp implements MateriaService{
 	@Override
 	public void borrarMateria(int codigo) {
 		// TODO Auto-generated method stub
+		log.info("SERVICE: MateriaServiceImp -> borrarMateria");
+		log.info("METHOD: borrarMateria()");
+		log.info("INFO: Borrando mateatia con codigo {}", codigo);
 		List<Materia> materias = materiaRepository.findMateriaByEstado(true);  
 		int p=buscarPosicionMateria(codigo);
 		if (p!=-1) {
@@ -76,6 +91,9 @@ public class MateriaServiceImp implements MateriaService{
 	@Override
 	public void modificarMateria(Materia m) {
 		// TODO Auto-generated method stub
+		log.info("SERVICE: MateriaServiceImp -> modificarMateria");
+		log.info("METHOD: modificarMateria()");
+		log.info("INFO: Modificando carrera con codigo {}", m.getCodigo());
 		List<Materia> materias = materiaRepository.findMateriaByEstado(true);  
 		int p=buscarPosicionMateria(m.getCodigo());
 		if (p!=-1) {
