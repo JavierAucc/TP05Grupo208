@@ -49,5 +49,8 @@ public class Carrera {
 	@OneToMany(mappedBy = "carrera", cascade = CascadeType.ALL)
 	private List<Alumno> alumnos;
 	
+	@OneToMany(mappedBy = "carrera", cascade = CascadeType.ALL)
+	private List<Materia> materias;
+
 	private boolean estado;
 }

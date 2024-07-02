@@ -53,7 +53,7 @@ public class CarreraController {
 
 	@PostMapping("/modificarCarrera")
 	public ModelAndView modificarCarreraListado(@Valid @ModelAttribute("nuevaCarrera") Carrera c, BindingResult resultado)  {
-		ModelAndView modelView=new ModelAndView();
+		ModelAndView modelView=new ModelAndView("listaDeCarreras");
 		try {
 			if (resultado.hasErrors()) {
 		    	 modelView.setViewName("formCarrera");
@@ -61,6 +61,7 @@ public class CarreraController {
 			else {
 		    	 carreraService.modificarCarrera(c);
 		    	 System.out.println("Carrera modificada");
+		    	 modelView.addObject("listadoCarreras",carreraService.mostrarCarrerasDTO());
 			}
 		}
 		catch(Exception e) {
@@ -69,16 +70,12 @@ public class CarreraController {
 			modelView.addObject("cargarCarreraErrorMessage", "Error de carga en la BD" + e.getMessage());
 			 System.out.println(e.getMessage());
 		}
-		if(resultado.hasErrors()==false) {
-			  modelView.setViewName("listaDeCarreras");
-			  modelView.addObject("listadoCarreras",carreraService.mostrarCarrerasDTO());
-		  }
 		return modelView;
 	}
 
 	@PostMapping("/guardarCarrera")
 	public ModelAndView saveCarrera(@Valid @ModelAttribute("nuevaCarrera") Carrera c, BindingResult resultado) {
-		ModelAndView modelView=new ModelAndView();
+		ModelAndView modelView=new ModelAndView("listaDeCarreras");
 		try {
 		     if (resultado.hasErrors()) {
 		    	 modelView.setViewName("formCarrera");
@@ -86,6 +83,7 @@ public class CarreraController {
 		     else {
 		    	 carreraService.guardarCarrera(c);
 		    	 System.out.println("Carrera guardada");
+		    	 modelView.addObject("listadoCarreras",carreraService.mostrarCarrerasDTO());
 		     }
 		 }
 		 catch(Exception e) {
@@ -94,11 +92,6 @@ public class CarreraController {
 			 modelView.addObject("cargarCarreraErrorMessage", "Error de carga en la BD" + e.getMessage());
 			 System.out.println(e.getMessage());
 		 }
-		  if(resultado.hasErrors()==false) {
-			  modelView.setViewName("listaDeCarreras");
-			  modelView.addObject("listadoCarreras",carreraService.mostrarCarrerasDTO());
-		  }
-
 		return modelView;
 	}
 
