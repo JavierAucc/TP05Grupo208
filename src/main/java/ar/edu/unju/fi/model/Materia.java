@@ -2,6 +2,7 @@ package ar.edu.unju.fi.model;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import jakarta.persistence.CascadeType;
@@ -12,6 +13,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
@@ -55,4 +57,9 @@ public class Materia {
 	
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Alumno> alumnos;
+	
+	@Autowired
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "carrera_id")
+	private Carrera carrera;
 }
