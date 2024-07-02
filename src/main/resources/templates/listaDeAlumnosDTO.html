@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es" data-bs-theme="dark">
+<head>
+<meta charset="UTF-8">
+<title>Vista de Alumnos en Carreras</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" data-th-href="@{/webjars/bootstrap/css/bootstrap.min.css}">
+</head>
+
+<body>
+
+	<div class="container" >
+		<header data-th-replace="~{layouts/header::nav}"></header>
+		  <h1 class="text-center">Alumnos x Carrera</h1>
+		<table class="table table-striped table-hover">
+		<thead>
+		    <tr>
+		      <th scope="col">Libre Universitaria</th>
+		      <th scope="col">Nombre</th>
+		      <th scope="col">Apellido</th>
+		       <th scope="col">Carrera</th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr  data-th-each=" alumno : ${listadoAlumnos}" >
+		      <th data-th-text="${alumno.lu}"></th>
+		      <td data-th-text="${alumno.nombre}"></td>
+		      <td data-th-text="${alumno.apellido}"></td>
+		      <td data-th-text="${alumno.carrera.nombre}"></td>
+
+		      <td>
+		      
+		      		<a href="/mostrarCarreras" class="btn btn-outline-danger">VOLVER</a>
+		      </td>
+		      
+		    </tr>
+			</tbody>
+		</table>
+
+		<div class="d-grid gap-2 col-6 mx-auto" >
+			<a href="/principal/index" class="button btn btn-outline-success">Inicio</a>
+		</div>
+		<footer data-th-replace="~{layouts/footer::foot}"></footer>
+	</div>
+
+		<script data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"
+			></script> 
+		
+</body>
+	
+	
+</html>

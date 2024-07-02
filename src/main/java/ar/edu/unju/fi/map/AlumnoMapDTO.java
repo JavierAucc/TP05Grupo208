@@ -14,17 +14,12 @@ import ar.edu.unju.fi.model.Alumno;
 public interface AlumnoMapDTO {
 
 	@Mapping(source="lu", target="lu")
-	@Mapping(source="dni", target="dni")
 	@Mapping(source="nombre", target="nombre")
 	@Mapping(source="apellido", target="apellido")
-	@Mapping(source="email", target="email")
-	@Mapping(source="telefono", target="telefono")
-	@Mapping(source="fnacimiento", target="fnacimiento")
-	@Mapping(source="domicilio", target="domicilio")
-	@Mapping(source="estado", target="estado")
+	@Mapping(source = "carrera", target = "carrera")
 	AlumnoDTO convertirAlumnoAAlumnoDTO(Alumno a);
 	
-	@Mapping(target = "carrera", ignore = true)
+	
 	@Mapping(target = "materias", ignore = true)
 	@InheritInverseConfiguration
 	Alumno convertirAlumnoDTOAAlumno (AlumnoDTO adto);
