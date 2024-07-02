@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import ar.edu.unju.fi.map.AlumnoMapDTO;
 import ar.edu.unju.fi.model.Alumno;
-import ar.edu.unju.fi.model.Carrera;
 import ar.edu.unju.fi.model.Materia;
 import ar.edu.unju.fi.service.AlumnoService;
 import ar.edu.unju.fi.service.CarreraService;
@@ -25,6 +25,8 @@ public class ConsultaController {
 	AlumnoService alumnoService;
 	@Autowired
 	MateriaService materiaService;
+	@Autowired
+	AlumnoMapDTO alumnoMapDTO;
 	
 	@Autowired
 	Alumno nuevoAlumno;
@@ -35,8 +37,10 @@ public class ConsultaController {
 	
 	@GetMapping("/consultarAlumnos/{lu}")
 	public ModelAndView consultarLosAlumnos(@PathVariable(name="lu") String lu) {
-		ModelAndView modelView = new ModelAndView("ListaDeAlumnos");
-		modelView.addObject("listadoAlumnos", alumnoService.filtrarAlumnosPorCarrera(lu));
+		ModelAndView modelView = new ModelAndView("ListaDeAlumnosDTO");
+		//return alumnoMapDTO.convertirListaAlumnosAListaAlumnosDTO(alumnoRepository.findAlumnoByEstado(true));
+		//modelView.addObject("listadoAlumnos", alumnoService.filtrarAlumnosPorCarrera(lu));
+		modelView.addObject("listadoAlumnos",alumnoMapDTO.convertirListaAlumnosAListaAlumnosDTO(alumnoService.filtrarAlumnosPorCarrera(lu)));
 		return modelView;
 	}
 	
@@ -45,7 +49,7 @@ public class ConsultaController {
 		ModelAndView modelView = new ModelAndView("formAlumnoInscripcion");		
 		modelView.addObject("nuevoAlumno", nuevoAlumno);
 		modelView.addObject("nuevaMateria", nuevaMateria);
-		modelView.addObject("listadoMaterias",materiaService.mostrarMateriasDTO());
+		modelView.addObject("listadoMaterias", materiaService.mostrarMateriasDTO());
 		return modelView;
 	}
 	

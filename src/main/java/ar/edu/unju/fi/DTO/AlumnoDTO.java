@@ -6,6 +6,7 @@ import java.time.LocalDate;
 
 import org.springframework.stereotype.Component;
 
+import ar.edu.unju.fi.model.Carrera;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -22,5 +23,5 @@ public class AlumnoDTO {
 	private LocalDate fnacimiento;
 	private String domicilio;
 	private Boolean estado;
-	
+	private Carrera carrera;
 }
