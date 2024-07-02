@@ -10,7 +10,9 @@ import ar.edu.unju.fi.map.DocenteMapDTO;
 import ar.edu.unju.fi.model.Docente;
 import ar.edu.unju.fi.repository.DocenteRepository;
 import ar.edu.unju.fi.service.DocenteService;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @Service
 public class DocenteServiceImp implements DocenteService {
 
@@ -22,29 +24,34 @@ public class DocenteServiceImp implements DocenteService {
 
 	@Override
 	public void guardarDocente(Docente docente) {
-		// TODO Auto-generated method stub
+		log.info("SERVICE: DocenteServiceImp -> guardarDocente");
+		log.info("METHOD: guardarDocente()");
+		log.info("INFO: Guardando Docente con legajo {}", docente.getLegajo());
+
 		docente.setEstado(true);
 		docenteRepository.save(docente);
-
+		log.info("INFO: Docente guardado exitosamente");
 	}
 
 	@Override
 	public List<DocenteDTO> mostrarDocentesDTO() {
-		// TODO Auto-generated method stub
-
-		// return docenteRepository.findAll();
+		log.info("SERVICE: DocenteServiceImp -> mostrarDocentesDTO");
+		log.info("METHOD: mostrarDocentesDTO");
 		return docenteMapDTO.convertirListaDocentesAListaDocentesDTO(docenteRepository.findDocenteByEstado(true));
 	}
 
 	@Override
 	public void borrarDocente(String legajo) {
-		// TODO Auto-generated method stub
+		log.info("SERVICE: DocenteServiceImp -> borrarDocente");
+		log.info("METHOD: borrarDocente()");
+		log.info("INFO: Borrando docente con legajo {}", legajo);
 		List<Docente> todosLosDocentes = docenteRepository.findAll();
 		for (int i = 0; i < todosLosDocentes.size(); i++) {
 			Docente d = todosLosDocentes.get(i);
 			if (d.getLegajo().equals(legajo)) {
 				d.setEstado(false);
 				docenteRepository.save(d);
+				log.info("INFO: Docente con legajo {}", legajo, "borrado existosamente");
 				break;
 			}
 		}
@@ -52,7 +59,8 @@ public class DocenteServiceImp implements DocenteService {
 
 	@Override
 	public void modificarDocente(Docente docenteMod) {
-		// TODO Auto-generated method stub
+		log.info("SERVICE: DocenteServiceImp -> modficarDocente()");
+		log.info("INFO: Modificando docente con legajo {}", docenteMod.getLegajo());
 		List<Docente> todosLosDocentes = docenteRepository.findAll();
 		for (int i = 0; i < todosLosDocentes.size(); i++) {
 			Docente d = todosLosDocentes.get(i);
@@ -60,7 +68,7 @@ public class DocenteServiceImp implements DocenteService {
 				todosLosDocentes.set(i, docenteMod);
 				todosLosDocentes.get(i).setEstado(true);
 				docenteRepository.save(todosLosDocentes.get(i));
-
+				log.info("INFO: Docente modificado exitosamente");
 				break;
 			}
 		}
@@ -69,10 +77,13 @@ public class DocenteServiceImp implements DocenteService {
 
 	@Override
 	public Docente buscarDocente(String legajo) {
+		log.info("SERVICE: DocenteServiceImp -> buscarDocente()");
+		log.info("INFO: Buscando docente con legajo {}", legajo);
 		List<Docente> todosLosDocentes = docenteRepository.findAll();
 		for (int i = 0; i < todosLosDocentes.size(); i++) {
 			Docente d = todosLosDocentes.get(i);
 			if (d.getLegajo().equals(legajo)) {
+				log.info("INFO: Docente encontrado con legajo {}", legajo);
 				return d;
 			}
 		}
