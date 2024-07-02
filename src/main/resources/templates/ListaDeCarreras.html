@@ -29,6 +29,9 @@
                 <a data-th-href="@{'/eliminarCarrera/'+${c.codigoCarrera}}" class="btn btn-danger">Borrar</a>            
                 <a data-th-href="@{'/modificarCarrera/'+${c.codigoCarrera}}" class="btn btn-danger">Modificar</a>
             </div>
+            <div class="alert alert-primary" role="alert" data-th-if="${errors}">
+			     <p data-th-text="${cargarCarreraErrorMessage}"></p>			     
+			</div>
         </div>
         <footer data-th-replace="~{layouts/footer::foot}"></footer>
     </div>    
