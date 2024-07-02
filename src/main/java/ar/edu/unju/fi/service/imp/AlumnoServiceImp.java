@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import ar.edu.unju.fi.DTO.AlumnoDTO;
 import ar.edu.unju.fi.map.AlumnoMapDTO;
 import ar.edu.unju.fi.model.Alumno;
-import ar.edu.unju.fi.model.Carrera;
 import ar.edu.unju.fi.model.Materia;
 import ar.edu.unju.fi.repository.AlumnoRepository;
 import ar.edu.unju.fi.repository.CarreraRepository;
@@ -110,12 +109,13 @@ public class AlumnoServiceImp implements AlumnoService{
 		alumnoRepository.save(alumno);
 		materiaRepository.save(materia);
 	}
-//operaciones alumno-carrera
 
 	@Override
 	public List<Alumno> filtrarAlumnosPorCarrera(String lu) {
 		// TODO Auto-generated method stub
-		return null;
+		return alumnoRepository.findByCarreraCodigo(lu);
 	}
+
+	
 	
 }

@@ -17,7 +17,6 @@ import ar.edu.unju.fi.service.MateriaService;
 import jakarta.validation.Valid;
 
 
-
 @Controller
 public class AlumnoController {
 	
@@ -139,39 +138,7 @@ public class AlumnoController {
 	}	
 	//--------
 
-	@GetMapping("/formularioInscripcion") // inscribe Alumno en Materias
-		public ModelAndView getFormAlumnoInscripcion() {
-			ModelAndView modelView = new ModelAndView("formAlumnoInscripcion");		
-			modelView.addObject("nuevoAlumno", nuevoAlumno);
-			modelView.addObject("nuevaMateria", nuevaMateria);
-			modelView.addObject("listadoMaterias",materiaService.mostrarMateriasDTO());
-			return modelView;
-		}
-		
-		@PostMapping("/inscribirAlumno")
-		public ModelAndView formularioInscripcion(@ModelAttribute("nuevoAlumno") Alumno alumno, @ModelAttribute("nuevaMateria") Materia materia) {
-			ModelAndView modelView = new ModelAndView("ListaDeAlumnos");
-			modelView.addObject("listadoAlumnos", alumnoService.mostrarAlumno());
-			try {
-				if (alumnoService.buscarAlumno(alumno.getLu())!=null){
-					alumnoService.inscribirAlumno(alumnoService.buscarAlumno(alumno.getLu()), materiaService.buscarMateria(materia.getCodigo()));			
-				}
-			}
-			catch( Exception e){
-				boolean errors = true;
-				modelView.addObject("errors", errors);
-				modelView.addObject("cargaAlumnoErrorMessage", " Error al cargar en la BD " + e.getMessage());
-				System.out.println(e.getMessage());
-			}
-			return modelView;	
-		}
-		
-		@GetMapping("/filtrarAlumnos/{codigo}")
-		public ModelAndView filtrarLosAlumnos(@PathVariable(name="codigo") Integer codigo) {
-			ModelAndView modelView = new ModelAndView("ListaDeAlumnos");
-			modelView.addObject("listadoAlumnos", alumnoService.filtrarAlumnos(codigo));
-			return modelView;
-		}
+	
 
 	
 	

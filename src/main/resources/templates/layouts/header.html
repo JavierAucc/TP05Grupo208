@@ -7,7 +7,7 @@
 </head>
 <body>
 	
-	<nav data-th-fragment="nav"	class="navbar bg-body-tertiary">
+	<nav data-th-fragment="nav" class="navbar bg-body-tertiary">
 			  <div class="container row bg-body-tertiary">
 			  	<div class=col-2>
 			  		<a class="navbar-brand" href="https://www.fi.unju.edu.ar/" target="_blank">
@@ -29,16 +29,47 @@
 					    </button>
 					    <div class="collapse navbar-collapse justify-content-center " id="navbarNavAltMarkup">
 					      <div class="navbar-nav">
-					        
-					        <a class="nav-link btn btn-outline-success me-2" href="/formularioCarrera">Carreras</a>
-					        <a class="nav-link btn btn-outline-success me-2" href="/formularioDocente">Docentes</a>
-					        <a class="nav-link btn btn-outline-success me-2" href="/formularioMateria">Materias</a>
-					        <a class="nav-link btn btn-outline-success me-2" href="/formularioAlumno">Alumnos</a>
-					        <a class="nav-link btn btn-outline-success me-2" href="/mostrarCarreras">Listado Carreras</a>
-					        <a class="nav-link btn btn-outline-success me-2" href="/mostrarMaterias" > Listado Materias </a>
-					        <a class="nav-link btn btn-outline-success me-2" href="/mostrarAlumnos" > Listado Alumnos</a>
+					        		<ul class="navbar-nav me-auto mb-4 mb-lg-0 " >						
+								<li class="nav-item dropdown "><a
+									class="nav-link dropdown-toggle btn btn-outline-success me-4" href="#" role="button"
+									data-bs-toggle="dropdown" aria-expanded="false"> Carrera </a>
+									<ul class="dropdown-menu">
+										<li><a class="dropdown-item" href="/formularioCarrera">Formulario Carrera</a></li>
+										<li><a class="dropdown-item" href="/mostrarCarreras">Ver Carreras</a></li>
+									</ul></li>
+									
+								<li class="nav-item dropdown "><a
+									class="nav-link dropdown-toggle btn btn-outline-success me-4" href="#" role="button"
+									data-bs-toggle="dropdown" aria-expanded="false"> Alumno </a>
+									<ul class="dropdown-menu">
+										<li><a class="dropdown-item" href="/formularioAlumno">Formulario Alumno</a></li>
+										<li><a class="dropdown-item" href="/mostrarAlumnos">Ver Alumnos</a></li>
+									</ul></li>
+									
+								<li class="nav-item dropdown "><a
+									class="nav-link dropdown-toggle btn btn-outline-success me-4" href="#" role="button"
+									data-bs-toggle="dropdown" aria-expanded="false"> Docente </a>
+									<ul class="dropdown-menu">
+										<li><a class="dropdown-item" href="/formularioDocente">Formulario Docente</a></li>
+										<li><a class="dropdown-item" href="/mostrarDocentes">Ver Docentes</a></li>
+									</ul></li>
+									
+								<li class="nav-item dropdown"><a
+									class="nav-link dropdown-toggle btn btn-outline-success me-4" href="#" role="button"
+									data-bs-toggle="dropdown" aria-expanded="false"> Materia </a>
+									<ul class="dropdown-menu">
+										<li><a class="dropdown-item" href="/formularioMateria">Formulario Materia</a></li>
+										<li><a class="dropdown-item" href="/formularioInscripcion">Formulario de Inscripcion</a></li>
+										<li><a class="dropdown-item" href="/mostrarMaterias">Ver Materias</a></li>
+									</ul></li>
+			
+							</ul>
+
 					      </div>
 					    </div>
+							
+
+					
 					    
 					  </div>
 				</nav>
@@ -47,7 +78,7 @@
 			
 		</nav>
 		
-		<script data-th-href="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"
-		type="text/javascript"></script> 
+		<script data-th-src="@{/webjars/bootstrap/5.3.3/js/bootstrap.bundle.min.js}"
+		></script> 
 </body>
 </html>
