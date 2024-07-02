@@ -43,7 +43,7 @@
 				    </select>					    
 			 </div>             
 			 <div class="col-md-4">
-					<label for="docente" class="form-label">Docente</label>
+					<label for="docente" class="form-label">Carrera</label>
 					<select id="docente" data-th-field="*{carrera.codigo}" class="form-control" required>
 					    <option value="">Seleccionar Carrera</option>
 						<option data-th-value="${c.codigoCarrera}" data-th-each="c:${listadoCarreras}" data-th-text="${c.nombreCarrera}"></option>
