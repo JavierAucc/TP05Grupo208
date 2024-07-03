@@ -15,17 +15,17 @@
              <input id="estado" name="estado" type="hidden" class="form-control" data-th-field="*{estado}">                                        
              <div class="col-md-4">
                  <label for="nombre" class="form-label">Nombre Materia</label>
-                 <input id="nombre" name="nombre" type="text" class="form-control" placeholder="Ingrese materia" required data-th-field="*{nombre}">
+                 <input id="nombre" name="nombre" type="text" class="form-control" placeholder="Ingrese materia" data-th-field="*{nombre}">
                  <p class="form-text text-danger" data-th-if="${#fields.hasErrors('nombre')}" data-th-errors="*{nombre}"></p>
              </div>
              <div class="col-md-4">
                  <label for="curso" class="form-label">Curso Materia</label>
-                 <input id="curso" name="curso" type="text" class="form-control" placeholder="Ingrese curso" required data-th-field="*{curso}">
+                 <input id="curso" name="curso" type="text" class="form-control" placeholder="Ingrese curso" data-th-field="*{curso}">
                  <p class="form-text text-danger" data-th-if="${#fields.hasErrors('curso')}" data-th-errors="*{curso}"></p>
              </div>
              <div class="col-md-4">
                  <label for="cantidadHoras" class="form-label">Cantidad de horas</label>
-                 <input id="cantidadHoras" name="cantidadHoras" type="number" class="form-control" required data-th-field="*{duracion}">
+                 <input id="cantidadHoras" name="cantidadHoras" type="number" class="form-control" data-th-field="*{duracion}">
                  <p class="form-text text-danger" data-th-if="${#fields.hasErrors('duracion')}" data-th-errors="*{duracion}"></p>
              </div>                                                
              <div class="col-md-4">
@@ -33,21 +33,22 @@
                     <label for="presencial">presencial</label>
                     <input type="radio" id="presencial" name="modalidad" value="true" data-th-field="*{modalidad}"></input><br>
                     <label for="virtual">virtual</label>
-                    <input type="radio" id="virtual" name="modalidad" value="false" data-th-field="*{modalidad}"></input><br>                                          
+                    <input type="radio" id="virtual" name="modalidad" value="false" data-th-field="*{modalidad}"></input><br>
+                                                              
              </div>
              <div class="col-md-4">
 					<label for="docente" class="form-label">Docente</label>
 					<select id="docente" data-th-field="*{docente.legajo}" class="form-control" required>
 					    <option value="">Seleccionar Docente</option>
 						<option data-th-value="${d.legajo}" data-th-each="d:${listadoDocentes}" data-th-text="${d.nombre}"></option>
-				    </select>					    
+				    </select>				   					    
 			 </div>             
 			 <div class="col-md-4">
 					<label for="docente" class="form-label">Carrera</label>
 					<select id="docente" data-th-field="*{carrera.codigo}" class="form-control" required>
 					    <option value="">Seleccionar Carrera</option>
 						<option data-th-value="${c.codigoCarrera}" data-th-each="c:${listadoCarreras}" data-th-text="${c.nombreCarrera}"></option>
-				    </select>					    
+				    </select>				    
 			 </div>
              <button type="submit" class="btn btn-primary">Guardar materia</button>                 
          </form>

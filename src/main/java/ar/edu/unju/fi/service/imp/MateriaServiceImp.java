@@ -23,28 +23,31 @@ public class MateriaServiceImp implements MateriaService{
 	MateriaMapDTO materiaMapDTO;
 
 	@Override
-	public void guardarMateria(Materia m) {
+	public void guardarMateria(Materia m) {//guarda una nueva materia completamente
 		// TODO Auto-generated method stub
 		log.info("SERVICE: MateriaServiceImp -> guardarMateria");
 		log.info("METHOD: guardarMateria()");
 		log.info("INFO: Guardando Materia con codigo {}", m.getCodigo());
+		//materia activa
 		m.setEstado(true);
 		materiaRepository.save(m);
 	}
 
 	@Override
-	public List<MateriaDTO> mostrarMateriasDTO() {
+	public List<MateriaDTO> mostrarMateriasDTO() {//listado de materiasDTO con menos atributos
 		// TODO Auto-generated method stub
 		log.info("SERVICE: MateriaServiceImp -> mostrarMateriasDTO");
 		log.info("METHOD: mostrarMateriasDTO()");
+		//conversión de listados
 		return materiaMapDTO.convertirListaMateriasAListaMateriasDTO(materiaRepository.findMateriaByEstado(true));		
 	}
 
 	@Override
-	public int buscarPosicionMateria(int codigo) {
+	public int buscarPosicionMateria(int codigo) {//búsqueda binaria
 		// TODO Auto-generated method stub
 		log.info("SERVICE: MateriaServiceImp -> buscarPosicionMateria");
 		log.info("METHOD: buscarPosicionMateria()");
+		//listado de materias activas
 		List<Materia> materias = materiaRepository.findMateriaByEstado(true); 
 		int alto=materias.size()-1,bajo=0,central,p=-1;	
 		while(p==-1 && bajo<=alto) {
@@ -60,26 +63,28 @@ public class MateriaServiceImp implements MateriaService{
 				}	
 			}
 		}
-		return p;
+		return p;//retorna indices
 	}
 
 	@Override
-	public Materia buscarMateria(int codigo) {
+	public Materia buscarMateria(int codigo) {//retorna un objeto de tipo materia
 		// TODO Auto-generated method stub
 		log.info("SERVICE: MateriaServiceImp -> buscarMateria");
 		log.info("METHOD: buscarMateria()");
 		log.info("INFO: Buscando materia con codigo {}", codigo);
+		//listado de materias activas
 		List<Materia> materias = materiaRepository.findMateriaByEstado(true);  
 		int p=buscarPosicionMateria(codigo);
 		return (p!=-1) ? materias.get(p) : null;
 	}
 
 	@Override
-	public void borrarMateria(int codigo) {
+	public void borrarMateria(int codigo) {//borrado lógico
 		// TODO Auto-generated method stub
 		log.info("SERVICE: MateriaServiceImp -> borrarMateria");
 		log.info("METHOD: borrarMateria()");
 		log.info("INFO: Borrando mateatia con codigo {}", codigo);
+		//listado de materias activas
 		List<Materia> materias = materiaRepository.findMateriaByEstado(true);  
 		int p=buscarPosicionMateria(codigo);
 		if (p!=-1) {
@@ -89,11 +94,12 @@ public class MateriaServiceImp implements MateriaService{
 	}
 
 	@Override
-	public void modificarMateria(Materia m) {
+	public void modificarMateria(Materia m) {//modifica una materia existente reemplazándola por otra
 		// TODO Auto-generated method stub
 		log.info("SERVICE: MateriaServiceImp -> modificarMateria");
 		log.info("METHOD: modificarMateria()");
 		log.info("INFO: Modificando carrera con codigo {}", m.getCodigo());
+		//listado de materias activas
 		List<Materia> materias = materiaRepository.findMateriaByEstado(true);  
 		int p=buscarPosicionMateria(m.getCodigo());
 		if (p!=-1) {
