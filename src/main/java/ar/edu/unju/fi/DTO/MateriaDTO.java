@@ -19,5 +19,4 @@ public class MateriaDTO {
 	private int duracionMateria;
 	private Docente docenteMateria;
 	private Carrera carreraMateria;
-	private boolean estadoMateria;
 }

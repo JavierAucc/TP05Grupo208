@@ -19,7 +19,12 @@ public interface AlumnoMapDTO {
 	@Mapping(source = "carrera", target = "carrera")
 	AlumnoDTO convertirAlumnoAAlumnoDTO(Alumno a);
 	
-	
+	@Mapping(target = "dni", ignore = true)
+	@Mapping(target = "domicilio", ignore = true)
+	@Mapping(target = "email", ignore = true)
+	@Mapping(target = "estado", ignore = true)
+	@Mapping(target = "fnacimiento", ignore = true)
+	@Mapping(target = "telefono", ignore = true)
 	@Mapping(target = "materias", ignore = true)
 	@InheritInverseConfiguration
 	Alumno convertirAlumnoDTOAAlumno (AlumnoDTO adto);

@@ -36,7 +36,7 @@
 		      <td data-th-text="${alumno.domicilio}"></td>
 		      <td data-th-text="${alumno.telefono}"></td>
 		      <td data-th-text="${alumno.email}"></td>
-		      <td data-th-text="${alumno.carrera.nombre}"></td>
+		      <td data-th-text="${alumno.carrera.estado ? alumno.carrera.nombre : ''}"></td>
 
 		      <td>
 		      

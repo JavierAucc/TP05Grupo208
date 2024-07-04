@@ -18,6 +18,7 @@ public interface CarreraMapDTO {
 	@Mapping(source="estado",target="estadoCarrera")
 	CarreraDTO convertirCarreraACarreraDTO(Carrera c);
 
+	@Mapping(target = "materias", ignore = true)
 	@Mapping(target = "alumnos", ignore = true)
 	@InheritInverseConfiguration
 	Carrera convertirCarreraDTOACarrera(CarreraDTO c);
