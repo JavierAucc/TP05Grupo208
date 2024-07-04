@@ -21,18 +21,18 @@
                     </li>
                     <li>
                         <strong>Nombre:</strong> <span data-th-text="${m.nombreMateria}"></span>
-                    </li>          
-                    <li>
-                        <strong>Cantidad de horas:</strong> <span data-th-text="${m.duracionMateria}"></span>
                     </li>
                     <li>
-                        <strong>Modalidad:</strong> <span data-th-text="${m.modalidadMateria ? 'presencial' : 'virtual'}"></span>
-                    </li>  
+                        <strong>Curso:</strong> <span data-th-text="${m.cursoMateria}"></span>
+                    </li>            
+                    <li>
+                        <strong>Cantidad de horas:</strong> <span data-th-text="${m.duracionMateria}"></span>
+                    </li>          
                     <li>                    
-                        <strong>Docente:</strong> <span data-th-text="${m.docenteMateria.nombre+' '+m.docenteMateria.apellido}"></span>                       
+                        <strong>Docente:</strong> <span data-th-text="${m.docenteMateria.estado ? (m.docenteMateria.nombre+' '+m.docenteMateria.apellido) : ''}"></span>                       
                     </li>
                     <li>                    
-                        <strong>Carrera:</strong> <span data-th-text="${m.carreraMateria.nombre}"></span>                       
+                        <strong>Carrera:</strong> <span data-th-text="${m.carreraMateria.estado ? m.carreraMateria.nombre : ''}"></span>                       
                     </li>        
                 </ul>
                 <a data-th-href="@{'/filtrarAlumnos/'+${m.codigoMateria}}" class="btn btn-danger">Filtrar Alumnos</a>

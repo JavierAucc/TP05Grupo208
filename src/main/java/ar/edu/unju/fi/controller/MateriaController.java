@@ -31,9 +31,9 @@ public class MateriaController {
 	CarreraService carreraService;
 	
 	@GetMapping("/formularioMateria")
-	public ModelAndView getFormMateria() {
+	public ModelAndView getFormMateria() {		
 		ModelAndView modelView=new ModelAndView("formMateria");
-		//agregar el objeto
+		//agregar los objetos
 		modelView.addObject("listadoDocentes",docenteService.mostrarDocentesDTO());
 		modelView.addObject("listadoCarreras",carreraService.mostrarCarrerasDTO());
 		modelView.addObject("nuevaMateria",nuevaMateria);
@@ -46,6 +46,7 @@ public class MateriaController {
 		ModelAndView modelView=new ModelAndView("listaDeMaterias");	
 		try {
 			if (resultado.hasErrors()) {
+				//mostrar el formulario nuevamente
 				modelView.addObject("listadoDocentes",docenteService.mostrarDocentesDTO());
 				modelView.addObject("listadoCarreras",carreraService.mostrarCarrerasDTO());
 				modelView.setViewName("formMateria");
@@ -60,6 +61,7 @@ public class MateriaController {
 			}					
 		}
 		catch( Exception e){
+			//se produce un error de carga en la base de datos
 			boolean errors = true;
 			modelView.addObject("errors", errors);
 			modelView.addObject("cargaMateriaErrorMessage", "Error al cargar en la BD " + e.getMessage());
@@ -70,7 +72,7 @@ public class MateriaController {
 	
 	@GetMapping("/mostrarMaterias")
 	public ModelAndView listarLasMaterias() {
-		//mostrar el listado
+		//mostrar el listado de materias
 		ModelAndView modelView=new ModelAndView("listaDeMaterias");
 		modelView.addObject("listadoMaterias",materiaService.mostrarMateriasDTO());		
 		return modelView;
@@ -78,9 +80,9 @@ public class MateriaController {
 	
 	@GetMapping("/modificarMateria/{codigo}")
 	public ModelAndView editarMateria(@PathVariable(name="codigo") Integer codigo) {
-		//buscar
+		//buscar la materia
 		Materia m = materiaService.buscarMateria(codigo);
-		//mostrar el nuevo formulario
+		//mostrar el formulario correspondiente
 		ModelAndView modelView=new ModelAndView("formMateria");	
 		modelView.addObject("nuevaMateria",m);
 		modelView.addObject("flag",true);
@@ -94,6 +96,7 @@ public class MateriaController {
 		ModelAndView modelView=new ModelAndView("listaDeMaterias");
 		try {
 			if (resultado.hasErrors()) {
+				//mostrar el formulario nuevamente
 				modelView.addObject("listadoCarreras",carreraService.mostrarCarrerasDTO());
 				modelView.addObject("listadoDocentes",docenteService.mostrarDocentesDTO());
 				modelView.setViewName("formMateria");
@@ -108,6 +111,7 @@ public class MateriaController {
 			}					
 		}
 		catch( Exception e){
+			//se produce un error de carga en la base de datos
 			boolean errors = true;
 			modelView.addObject("errors", errors);
 			modelView.addObject("cargaMateriaErrorMessage", "Error al cargar en la BD " + e.getMessage());
@@ -118,9 +122,9 @@ public class MateriaController {
 	
 	@GetMapping("/eliminarMateria/{codigo}")
 	public ModelAndView borrarMateriaListado(@PathVariable(name="codigo") Integer codigo) {
-		//borrar
+		//borrado lógico de la materia
 		materiaService.borrarMateria(codigo);
-		//mostrar el nuevo listado
+		//mostrar el nuevo listado de materias
 		ModelAndView modelView=new ModelAndView("listaDeMaterias");
 		modelView.addObject("listadoMaterias",materiaService.mostrarMateriasDTO());	
 		return modelView;
