@@ -4,11 +4,9 @@ import java.util.List;
 
 import org.springframework.stereotype.Component;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -27,7 +25,6 @@ import lombok.ToString;
 
 @Component
 @Entity
-@Table(name="carreras")
 public class Carrera {
 	
 	@Id
@@ -46,10 +43,10 @@ public class Carrera {
 	private int duracion;
 
 	
-	@OneToMany(mappedBy = "carrera", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "carrera")
 	private List<Alumno> alumnos;
 	
-	@OneToMany(mappedBy = "carrera", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "carrera")
 	private List<Materia> materias;
 
 	private boolean estado;
